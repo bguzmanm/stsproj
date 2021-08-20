@@ -10,8 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import cl.awakelab.stsproj.model.Estudiante;
+import cl.awakelab.stsproj.model.Facilitador;
 
 /**
  * Handles requests for the application home page.
@@ -27,10 +30,9 @@ public class HomeController {
 	public String home(Model model) {
 		
 		
-		Estudiante e = new Estudiante("1-1", "Brian", "Guzmán");
+		Facilitador f = new Facilitador("1-1", "Brian", "Guzmán");
 		
-		model.addAttribute("serverTime", " una cuarto para el piñen" );
-		model.addAttribute("e", e);
+		model.addAttribute("f", f);
 		
 		return "home";
 	}

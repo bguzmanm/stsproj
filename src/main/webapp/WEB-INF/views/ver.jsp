@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Crear</title>
+<title>Ver Estudiante</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -13,6 +14,7 @@
 <link
 	href="${pageContext.request.getContextPath()}/resources/css/estilo.css"
 	rel="stylesheet" type="text/css">
+
 </head>
 <body>
 	<div class="container">
@@ -20,27 +22,18 @@
 		<jsp:include page="menu.jsp"></jsp:include>
 
 		<h1>Crear Estudiante</h1>
-
-
-		<form action="${pageContext.request.getContextPath()}/estudiante/crear" method="post">
-			<div class="mb-3">
-				<label for="rut" class="form-label">Rut</label> <input type="text"
-					class="form-control" id="rut" placeholder="1-1">
-			</div>
-			<div class="mb-3">
-				<label for="nombre" class="form-label">Nombre</label> <input
-					type="text" class="form-control" id="nombre" placeholder="Julio">
-			</div>
-			<div class="mb-3">
-				<label for="apellido" class="form-label">Apellido</label> <input
-					type="text" class="form-control" id="apellido"
-					placeholder="Ponce Lerau">
-			</div>
-			<div class="col-12">
-				<button type="submit" class="btn btn-primary">Enviar</button>
-			</div>
-		</form>
-
+		<div class="mb-3">
+			<label for="rut" class="form-label">Rut</label>
+			<c:out value="${e.getRut()}"></c:out>
+		</div>
+		<div class="mb-3">
+			<label for="nombre" class="form-label">Nombre</label> 
+			<c:out value="${e.getNombre()}"></c:out>
+		</div>
+		<div class="mb-3">
+			<label for="apellido" class="form-label">Apellido</label> 
+			<c:out value="${e.getApellido()}"></c:out>
+		</div>
 	</div>
 
 
@@ -52,6 +45,5 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
 		integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
 		crossorigin="anonymous"></script>
-
 </body>
 </html>

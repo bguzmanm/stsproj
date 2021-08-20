@@ -1,0 +1,11 @@
+@charset "UTF-8";
+body {
+	
+	font-family: Tahoma, serif;
+	
+}
+
+.cabecera{
+	background: url('../img/piriguin.jpeg') 
+	
+}
