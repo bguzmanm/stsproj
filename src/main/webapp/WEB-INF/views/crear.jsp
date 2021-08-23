@@ -25,15 +25,15 @@
 		<form action="${pageContext.request.getContextPath()}/estudiante/crear" method="post">
 			<div class="mb-3">
 				<label for="rut" class="form-label">Rut</label> <input type="text"
-					class="form-control" id="rut" placeholder="1-1">
+					class="form-control" id="rut" name="rut" placeholder="1-1">
 			</div>
 			<div class="mb-3">
 				<label for="nombre" class="form-label">Nombre</label> <input
-					type="text" class="form-control" id="nombre" placeholder="Julio">
+					type="text" class="form-control" id="nombre" name="nombre" placeholder="Julio">
 			</div>
 			<div class="mb-3">
 				<label for="apellido" class="form-label">Apellido</label> <input
-					type="text" class="form-control" id="apellido"
+					type="text" class="form-control" id="apellido" name="apellido"
 					placeholder="Ponce Lerau">
 			</div>
 			<div class="col-12">

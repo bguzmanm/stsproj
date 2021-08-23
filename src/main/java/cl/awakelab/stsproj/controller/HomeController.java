@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,5 +37,16 @@ public class HomeController {
 		
 		return "home";
 	}
+	
+	
+//	@RequestMapping(value="/jome/{symbolicName:[a-z]}-{version:\\d\\.\\d\\.\\d}{extension:\\.[a-z]}", method = RequestMethod.GET)
+	@RequestMapping(value="/jome/{version:[\\d{1,2}.\\d{1,2}.\\d{1,2}]+}", method = RequestMethod.GET)
+	public String jome(@PathVariable("version") String version) {
+		
+		System.out.println(version);
+		return "home";
+		
+	}
+	
 	
 }
