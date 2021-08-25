@@ -1,7 +1,10 @@
 package cl.awakelab.stsproj.controller;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,7 +37,7 @@ public class HomeController {
 	 * @param extension recibe letras desde la a hasta la z, A hasta la Z, y números desde el 0 al 9, desde 1 a 10 veces.
 	 * @return retorna "home", y muestra por consola lo que ingresaste.
 	 */
-	@RequestMapping(value = "/jome/{nombre:[a-z]{1,20}}.{version:[0-9]{1,2}.[0-9]{1,2}.[0-9]{1,2}}.{extension:[a-zA-Z0-9]{1,10}}", method = RequestMethod.GET)
+	@RequestMapping(value = "/jome/{nombre:[a-zA-Z]{1,20}}.{version:[0-9]{1,2}.[0-9]{1,2}.[0-9]{1,2}}.{extension:[a-zA-Z0-9]{1,10}}", method = RequestMethod.GET)
 	public String jome(@PathVariable("nombre") String nombre, @PathVariable("version") String version,
 			@PathVariable("extension") String extension) {
 
@@ -42,5 +45,20 @@ public class HomeController {
 		return "home";
 
 	}
+	
+	
+	//GET /pets/42;q=11;r=22
+	//GET /estudiantes/156-2;gabriel;daniel;ronald;luis
+	//GET /estudiantes/156-2;gabriel;eliseo;ronald;luis;esteban
+	@RequestMapping(value="/pets/{petId}", method = RequestMethod.GET)
+	public String findPet(@MatrixVariable(pathVar="petId") Map<String, String> petMatrixVars) {
+		
+		
+		System.out.println("q= " + petMatrixVars.size());
+		
+		return "home";
+	}
+	
+	
 
 }

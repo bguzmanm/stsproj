@@ -20,19 +20,24 @@
 	<table class="table">
 		<thead class="table-dark">
 			<tr>
-				<th>Rut</th>
+				<th>DNI</th>
 				<th>Nombre</th>
 				<th>Apellido</th>
+				<th>Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="e" items="${lista}">
+			<c:forEach var="e" items="${estudiantes}">
 				<tr>
 					<th>
-					<a href="${pageContext.request.contextPath}/estudiante/ver/${e.getRut()}">
-					<c:out value="${e.getRut()}"></c:out></a></th>
+					<a href="${pageContext.request.contextPath}/estudiante/ver/${e.getDni()}">
+					<c:out value="${e.getDni()}"></c:out></a></th>
 					<td><c:out value="${e.getNombre()}"></c:out></td>
 					<td><c:out value="${e.getApellido()}"></c:out></td>
+					<td>
+					<a href="${pageContext.request.getContextPath()}/estudiante/editar/${e.getId()}">Editar</a> |
+					<a href="${pageContext.request.getContextPath()}/estudiante/borrar/${e.getId()}">Borrar</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>

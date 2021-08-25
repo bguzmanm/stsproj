@@ -23,8 +23,8 @@
 
 		<h1>Crear Estudiante</h1>
 		<div class="mb-3">
-			<label for="rut" class="form-label">Rut</label>
-			<c:out value="${e.getRut()}"></c:out>
+			<label for="rut" class="form-label">DNI</label>
+			<c:out value="${e.getDni()}"></c:out>
 		</div>
 		<div class="mb-3">
 			<label for="nombre" class="form-label">Nombre</label> 
