@@ -23,7 +23,7 @@ public class EstudianteDAOImpl implements IEstudianteDAO {
     public List<Estudiante> readAll() {
         // TODO Auto-generated method stub
 
-        String sql = "select idestudiante, nombre, apellido, direccion, fechanacimiento, dni from estudiantes";
+        String sql = "select idestudiante, nombre, apellido, direccion, dni from estudiantes";
 
         return template.query(sql, new EstudianteRowMapper());
 
@@ -33,7 +33,7 @@ public class EstudianteDAOImpl implements IEstudianteDAO {
     public Estudiante readOne(String dni) {
         // TODO Auto-generated method stub
 
-        String sql = "select idestudiante, nombre, apellido, direccion, fechanacimiento, dni from estudiantes " +
+        String sql = "select idestudiante, nombre, apellido, direccion, dni from estudiantes " +
                 " where dni = ? ";
 
 
@@ -44,12 +44,22 @@ public class EstudianteDAOImpl implements IEstudianteDAO {
 
 	@Override
 	public void create(Estudiante e) {
-		// 
+		// como no manejamos autoincremento, ni secuencias, voy a generar el ID "manualmente".
 		
-		String sql = "insert into estudiantes (idestudiante, nombre, apellido, direccion, fechanacimiento, dni) values " +
-				"(?, ?, ?, ?, ?, ?)";
 		
-		template.update(sql, new Object[] {e.getId(), e.getNombre(), e.getApellido(), e.getDireccion(), e.getFechaNacimiento(), e.getDni()});
+		String sql_ultimo = "select max(idestudiante) from estudiantes";
+		
+		int ultimo = template.queryForObject(sql_ultimo, Integer.class);
+		System.out.println("el último creado: " + ultimo);
+		
+		ultimo++;
+		
+		String sql = "insert into estudiantes (idestudiante, nombre, apellido, direccion, dni) values " +
+				"(?, ?, ?, ?, ?)";
+		
+		e.setId(ultimo);
+		
+		template.update(sql, new Object[] {e.getId(), e.getNombre(), e.getApellido(), e.getDireccion(), e.getDni()});
 		
 		
 	}
@@ -77,7 +87,7 @@ public class EstudianteDAOImpl implements IEstudianteDAO {
 	@Override
 	public Estudiante readOne(int id) {
 
-        String sql = "select idestudiante, nombre, apellido, direccion, fechanacimiento, dni from estudiantes " +
+        String sql = "select idestudiante, nombre, apellido, direccion, dni from estudiantes " +
                 " where idestudiante = ? ";
 
 
@@ -90,6 +100,6 @@ class EstudianteRowMapper implements RowMapper<Estudiante> {
     @Override
     public Estudiante mapRow(ResultSet rs, int rowNum) throws SQLException {
         return new Estudiante(rs.getInt("idestudiante"), rs.getString("dni"), rs.getString("nombre"),
-                rs.getString("apellido"), rs.getString("direccion"), rs.getString("fechanacimiento"));
+                rs.getString("apellido"), rs.getString("direccion"));
     }
 }

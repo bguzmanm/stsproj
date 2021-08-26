@@ -7,7 +7,7 @@ public class Estudiante {
 	private String nombre;
 	private String apellido;
 	private String direccion;
-	private String fechaNacimiento;
+	
 	
 	
 	public Estudiante() {
@@ -15,14 +15,14 @@ public class Estudiante {
 	}
 
 
-	public Estudiante(int id, String dni, String nombre, String apellido, String direccion, String fechaNacimiento) {
+	public Estudiante(int id, String dni, String nombre, String apellido, String direccion) {
 		super();
 		this.id = id;
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.direccion = direccion;
-		this.fechaNacimiento = fechaNacimiento;
+		
 	}
 
 
@@ -74,17 +74,6 @@ public class Estudiante {
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-
-
-	public String getFechaNacimiento() {
-		return fechaNacimiento;
-	}
-
-
-	public void setFechaNacimiento(String fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}
-	
 	
 	
 	

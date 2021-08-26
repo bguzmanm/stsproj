@@ -24,8 +24,8 @@
 
 		<form action="${pageContext.request.getContextPath()}/estudiante/crear" method="post">
 			<div class="mb-3">
-				<label for="rut" class="form-label">Rut</label> <input type="text"
-					class="form-control" id="rut" name="rut" placeholder="1-1">
+				<label for="dni" class="form-label">DNI</label> <input type="text"
+					class="form-control" id="dni" name="dni" placeholder="1-1">
 			</div>
 			<div class="mb-3">
 				<label for="nombre" class="form-label">Nombre</label> <input
@@ -35,6 +35,11 @@
 				<label for="apellido" class="form-label">Apellido</label> <input
 					type="text" class="form-control" id="apellido" name="apellido"
 					placeholder="Ponce Lerau">
+			</div>
+			<div class="mb-3">
+				<label for="direccion" class="form-label">Dirección</label> <input
+					type="text" class="form-control" id="direccion" name="direccion"
+					placeholder="Mapocho 1567">
 			</div>
 			<div class="col-12">
 				<button type="submit" class="btn btn-primary">Enviar</button>

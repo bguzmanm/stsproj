@@ -88,13 +88,18 @@ public class EstudianteController {
 	}
 
 	@RequestMapping(value = "/crear", method = RequestMethod.POST)
-	public String crearGuardar(Model model, @RequestParam("rut") String rut, @RequestParam("nombre") String nombre,
-			@RequestParam("apellido") String apellido) {
+	public String crearGuardar(Model model, @RequestParam("dni") String dni, @RequestParam("nombre") String nombre,
+			@RequestParam("apellido") String apellido, @RequestParam("direccion") String direccion) {
 
 		
-		System.out.println("Rut:" + rut );
-		System.out.println("Nombre: " + nombre);
-		System.out.println("Apellido: " + apellido);
+		Estudiante e = new Estudiante();
+		e.setDni(dni);
+		e.setNombre(nombre);
+		e.setApellido(apellido);
+		e.setDireccion(direccion);
+		
+		eDAO.create(e);
+		
 		return "redirect:/estudiante/listar";
 
 	}
